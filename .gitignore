@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Keep example configuration
+!.env.example
+
+# Frontend
+node_modules/
+dist/
+
+# IDE
+.vscode/
