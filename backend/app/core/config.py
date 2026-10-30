@@ -34,7 +34,7 @@ class Settings(BaseSettings):
     def prevent_mock_payments_in_production(self) -> "Settings":
         if(
             self.app_env == "production"
-            and self.mock_payment_enabled
+            and self.mock_payments_enabled
         ):
             raise ValueError(
                 "Mock payments must be disabled "
