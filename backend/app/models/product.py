@@ -2,9 +2,10 @@ from datetime import datetime
 from decimal import Decimal
 
 from sqlalchemy import (
-    Boolean, 
+    Boolean,
     CheckConstraint,
     DateTime,
+    ForeignKey,
     Index,
     Numeric,
     String,
@@ -19,7 +20,7 @@ from app.db.base import Base
 class Product(Base):
     __tablename__ = "products"
 
-    __table__args__ = (
+    __table_args__ = (
         CheckConstraint(
             "price > 0",
             name = "ck_products_price_positive",
@@ -52,7 +53,6 @@ class Product(Base):
 
     description:Mapped[str] = mapped_column(
         String(200),
-        unique=True,
         nullable=False,
     )
 
@@ -84,4 +84,10 @@ class Product(Base):
         server_default=func.now(),
         onupdate=func.now(),
         nullable=False,
+    )
+
+    seller_id: Mapped[int] = mapped_column(
+    ForeignKey("seller_profiles.id", ondelete="RESTRICT"),
+    nullable=False,
+    index=True,
     )

@@ -16,7 +16,7 @@ from app.db.base import Base
 class User(Base):
     __tablename__ = "users"
 
-    __table__args__ = (
+    __table_args__ = (
         CheckConstraint(
             "telegram_id > 0",
             name="ck_users_telegram_id_positive",
